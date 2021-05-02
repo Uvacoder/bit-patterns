@@ -7,6 +7,13 @@
   export let bits = [];
   export let bitSignature;
 
+  let bitObjects = bits.map((bit) => {
+    return {
+      bv: bit,
+      id: parseInt(`${bitSignature}${bits.indexOf(bit)}`)
+    }
+  })
+
   let roughSvg;
 
 
@@ -25,9 +32,9 @@
 
 
 <section class="bit-single" id={bitSignature}>
-  {#each bits as bit}
+  {#each bitObjects as bit, index}
   <div class="bit" transition:fade={{duration: 500}}>
-    <svg use:makeRect={bit} class="rough-rect" viewBox="0 0 16 16" height="16">
+    <svg use:makeRect={bit.bv} class="rough-rect" viewBox="0 0 16 16" height="16">
 
     </svg>
   </div>

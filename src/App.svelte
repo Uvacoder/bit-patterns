@@ -75,24 +75,38 @@ function updateBitNumber() {
     />
 </svelte:head>
 
+<!-- <header> -->
+  <!-- <wired-card elevation="3"> -->
+    <!-- <h1>Bit Combinations</h1> -->
+    <!-- <section class="legend">
+      <div class="legend-item">
+        <span class="label">On:</span> <svg use:makeRect={true} viewBox="0 0 16 16" width="16" height="28"></svg>
+      </div>
+      <div class="legend-item">
+        <span class="label">Off:</span> <svg use:makeRect={false} viewBox="0 0 16 16" width="16" height="28"></svg>
+      </div>
+    </section> -->
+  <!-- </wired-card> -->
+<!-- </header> -->
 <main>
-  <header>
-    <wired-card elevation="3">
-      <h1>Bit Combinations</h1>
-      <section class="legend">
-        <div class="legend-item">
-          <span class="label">On:</span> <svg use:makeRect={true} viewBox="0 0 16 16" width="16" height="28"></svg>
-        </div>
-        <div class="legend-item">
-          <span class="label">Off:</span> <svg use:makeRect={false} viewBox="0 0 16 16" width="16" height="28"></svg>
-        </div>
-      </section>
-    </wired-card>
-  </header>
   <section class="control">
     <h1>Bits: <span class="highlight">{bitNumber}</span></h1>
     <h1>Combinations: <span class="highlight">{combinations.length}</span></h1>
     <wired-slider min="1" max="8" value="1" bind:this={slider} on:change={updateBitNumber} />
+    <!-- <h4 class="legend-title">Legend</h4> -->
+    <section class="sidebar-legend">
+      <div class="legend-item">
+        <span class="label">On:</span> <svg use:makeRect={true} viewBox="0 0 16 16" width="16" height="28"></svg>
+      </div>
+      <div class="legend-item">
+        <span class="label">Off:</span> <svg use:makeRect={false} viewBox="0 0 16 16" width="16" height="28"></svg>
+      </div>
+    </section>
+    <footer>
+      <p>
+        Made with <a href="http://svelte.dev">Svelte</a>, a <a href="http://https://roughjs.com/">Rough</a>, <a href="http://https://wiredjs.com/">Wired</a>, and <a href="https://vitejs.dev/">Vite</a>
+      </p>
+    </footer>
   </section>
   <article class="bit-list">
     {#each combinations as stateRow (makeBitSignature(stateRow))}
@@ -133,18 +147,18 @@ function updateBitNumber() {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    grid-column: 1/3;
+    /* grid-column: 1/3; */
     text-align: center;
     margin-bottom: 5rem;
   }
   wired-card h1 {
     margin: 3rem;
   }
-  .legend {
+  .sidebar-legend {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     text-align: center;
-    margin: 0;
+    margin: 2rem 0;
     padding: 0;
     height: 2rem;
   }
@@ -172,5 +186,8 @@ function updateBitNumber() {
   }
   wired-slider {
     --wired-slider-knob-color: tomato;
+  }
+  footer {
+    text-align: center;
   }
 </style>
