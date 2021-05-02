@@ -43,16 +43,17 @@ function firstTrue(array) {
 }
 
 function makeRect(node, state) {
-  roughSvg = rough.svg(node);
+    roughSvg = rough.svg(node);
 
-  const rect = roughSvg.rectangle(0,0,16,16, {
-    fill: state === true ? 'tomato' : '',
-    stroke: 'tomato',
-    roughness: 1,
-    hachureGap: 0.9
-  });
-  node.appendChild(rect);
-}
+    const rect = roughSvg.rectangle(0,0,16,16, {
+      fill: state === true ? 'tomato' : '',
+      stroke: 'tomato',
+      roughness: 1,
+      hachureGap: 4,
+      fillWeight: 1.5,
+    });
+    node.appendChild(rect);
+  }
 
 function makeBitSignature(array) {
   let bitSignature = '';
@@ -75,25 +76,11 @@ function updateBitNumber() {
     />
 </svelte:head>
 
-<!-- <header> -->
-  <!-- <wired-card elevation="3"> -->
-    <!-- <h1>Bit Combinations</h1> -->
-    <!-- <section class="legend">
-      <div class="legend-item">
-        <span class="label">On:</span> <svg use:makeRect={true} viewBox="0 0 16 16" width="16" height="28"></svg>
-      </div>
-      <div class="legend-item">
-        <span class="label">Off:</span> <svg use:makeRect={false} viewBox="0 0 16 16" width="16" height="28"></svg>
-      </div>
-    </section> -->
-  <!-- </wired-card> -->
-<!-- </header> -->
 <main>
   <section class="control">
     <h1>Bits: <span class="highlight">{bitNumber}</span></h1>
     <h1>Combinations: <span class="highlight">{combinations.length}</span></h1>
     <wired-slider min="1" max="8" value="1" bind:this={slider} on:change={updateBitNumber} />
-    <!-- <h4 class="legend-title">Legend</h4> -->
     <section class="sidebar-legend">
       <div class="legend-item">
         <span class="label">On:</span> <svg use:makeRect={true} viewBox="0 0 16 16" width="16" height="28"></svg>

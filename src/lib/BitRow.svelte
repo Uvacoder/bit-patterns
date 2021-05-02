@@ -15,6 +15,7 @@
   })
 
   let roughSvg;
+  let RoughCanvas;
 
 
   function makeRect(node, state) {
@@ -24,7 +25,8 @@
       fill: state === true ? 'tomato' : '',
       stroke: 'tomato',
       roughness: 1,
-      hachureGap: 0.9
+      hachureGap: 4,
+      fillWeight: 1.5,
     });
     node.appendChild(rect);
   }
